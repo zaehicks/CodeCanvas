@@ -15,6 +15,16 @@ mongoose
     console.log(err);
   });
 
+
+mongoose
+  .connect(process.env.MONGO)
+  .then(() => {
+    console.log("MongoDb is connected");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
 const app = express();
 
 app.use(express.json());
