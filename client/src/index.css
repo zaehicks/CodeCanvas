@@ -9,3 +9,13 @@ body {
 .ql-editor {
   font-size: 1.05rem;
 }
+
+/* Dark mode */
+.flowbite-dark .ql-editor[data-placeholder]::before {
+  color: var(--text-color-dark);
+}
+
+/* Regular white mode */
+.ql-editor[data-placeholder]::before {
+  color: var(--text-color-light);
+}
