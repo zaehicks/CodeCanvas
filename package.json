@@ -22,6 +22,7 @@
     "react-circular-progressbar": "^2.1.0"
   },
   "devDependencies": {
+    "@tailwindcss/line-clamp": "^0.4.4",
     "dotenv": "^16.3.1"
   }
 }
