@@ -23,8 +23,6 @@ const UpdatePost = () => {
   const [publishError, setPublishError] = useState(null);
   const { postId } = useParams();
 
-  console.log("formData", formData);
-
   const toolbarOptions = [
     ["bold", "italic", "underline", "strike"], // toggled buttons
     ["blockquote", "code-block"],
@@ -68,7 +66,7 @@ const UpdatePost = () => {
           const postData = data.posts[0];
           setFormData({
             ...postData,
-            _id: postData._id, // Assuming _id is a field in your postData
+            _id: postData._id,
           });
         }
       };
