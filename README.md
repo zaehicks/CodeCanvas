@@ -35,6 +35,6 @@ CodeCanvas includes an admin dashboard designed for admin users, providing them 
 
 ## Contributions and Feedback
 
-Contributions to CodeCanvas are welcome! Whether it's bug fixes, feature enhancements, or suggestions for improvement, your input is valuable in making CodeCanvas even better. Feel free to open issues, submit pull requests, or provide feedback on existing features.
+Contributions to CodeCanvas are welcome! Whether it's bug fixes, feature enhancements, or suggestions for improvement, your input is valuable in making CodeCanvas even better. Feel free to provide feedback on existing features.
 
 Thank you for exploring CodeCanvas! Happy blogging! 🎉📝
