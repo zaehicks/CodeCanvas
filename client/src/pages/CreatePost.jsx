@@ -1,5 +1,4 @@
 import { Alert, Button, FileInput, Select, TextInput } from "flowbite-react";
-import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import {
@@ -8,21 +7,47 @@ import {
   ref,
   uploadBytesResumable,
 } from "firebase/storage";
+import { app } from "../firebase";
+import { useState } from "react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import { app } from "../firebase.js";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
-const CreatePost = () => {
+export default function CreatePost() {
   const [file, setFile] = useState(null);
   const [imageUploadProgress, setImageUploadProgress] = useState(null);
   const [imageUploadError, setImageUploadError] = useState(null);
   const [formData, setFormData] = useState({});
   const [publishError, setPublishError] = useState(null);
 
+  const toolbarOptions = [
+    ["bold", "italic", "underline", "strike"], // toggled buttons
+    ["blockquote", "code-block"],
+    ["link", "image", "video", "formula"],
+
+    [{ header: 1 }, { header: 2 }], // custom button values
+    [{ list: "ordered" }, { list: "bullet" }, { list: "check" }],
+    [{ script: "sub" }, { script: "super" }], // superscript/subscript
+    [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+    [{ direction: "rtl" }], // text direction
+
+    [{ size: ["small", false, "large", "huge"] }], // custom dropdown
+    [{ header: [1, 2, 3, 4, 5, 6, false] }],
+
+    [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+    [{ font: [] }],
+    [{ align: [] }],
+
+    ["clean"], // remove formatting button
+  ];
+
+  const module = {
+    toolbar: toolbarOptions,
+  };
+
   const navigate = useNavigate();
 
-  const handleUploadImage = async () => {
+  const handleUpdloadImage = async () => {
     try {
       if (!file) {
         setImageUploadError("Please select an image");
@@ -76,7 +101,7 @@ const CreatePost = () => {
 
       if (res.ok) {
         setPublishError(null);
-        navigate(`/post/${data._id}`)
+        navigate(`/post/${data.slug}`);
       }
     } catch (error) {
       setPublishError("Something went wrong");
@@ -105,8 +130,7 @@ const CreatePost = () => {
             <option value="uncategorized">Select a category</option>
             <option value="javascript">JavaScript</option>
             <option value="reactjs">React.js</option>
-            <option value="css">CSS</option>
-            <option value="DSA">Data Structures & Algorithms</option>
+            <option value="nextjs">Next.js</option>
           </Select>
         </div>
         <div className="flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3">
@@ -120,7 +144,7 @@ const CreatePost = () => {
             gradientDuoTone="purpleToBlue"
             size="sm"
             outline
-            onClick={handleUploadImage}
+            onClick={handleUpdloadImage}
             disabled={imageUploadProgress}
           >
             {imageUploadProgress ? (
@@ -144,8 +168,9 @@ const CreatePost = () => {
           />
         )}
         <ReactQuill
+          modules={module}
           theme="snow"
-          placeholder="Write Something... 📝 "
+          placeholder="Write something..."
           className="h-72 mb-12"
           required
           onChange={(value) => {
@@ -163,6 +188,4 @@ const CreatePost = () => {
       </form>
     </div>
   );
-};
-
-export default CreatePost;
+}
