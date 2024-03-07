@@ -1,6 +1,6 @@
 # CodeCanvas Blog Project
 
-Welcome to **CodeCanvas**, a full-stack blog project developed using JavaScript, React, Express.js, MongoDB, Firebase, and Flowbite React UI library. CodeCanvas provides a platform for users to create, edit, and share blog posts in a seamless and user-friendly environment.
+Welcome to **CodeCanvas**, a full-stack blog project developed using JavaScript, React, Express.js, MongoDB, Firebase, and Flowbite React UI library. CodeCanvas provides a platform for users to create, edit, and share tech blog posts in a seamless and user-friendly environment.
 
 ## Technologies Used
 
