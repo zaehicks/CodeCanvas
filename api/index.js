@@ -7,7 +7,7 @@ import postRoutes from "./routes/post.route.js";
 import commentRoutes from "./routes/comment.route.js";
 import cookieParser from "cookie-parser";
 import path from "path";
-
+import bodyParser from "body-parser"; // Import body-parser
 dotenv.config();
 
 mongoose
@@ -31,6 +31,9 @@ mongoose
 const __dirname = path.resolve();
 
 const app = express();
+
+app.use(bodyParser.json({ limit: '10mb' })); // Increase request size limit
+app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 
 app.use(express.json());
 app.use(cookieParser());
