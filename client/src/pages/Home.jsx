@@ -17,17 +17,17 @@ const Home = () => {
   return (
     <div>
       <div className="flex flex-col gap-6 p-28 px-3 max-w-6xl mx-auto">
-        <h1 className="text-3xl font-bold lg:text-6xl">
-          <span className="px-0.5 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to to-pink-500 rounded-lg bg-clip-text text-transparent">
+        <h1 className=" text-3xl font-bold lg:text-6xl">
+          <span className="animate-pulse px-0.5 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to to-pink-500 rounded-lg bg-clip-text text-transparent">
             This
           </span>{" "}
           is{" "}
-          <span className="px-0.5 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to to-pink-500 rounded-lg bg-clip-text text-transparent">
+          <span className="animate-pulse px-0.5 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to to-pink-500 rounded-lg bg-clip-text text-transparent">
             Code
           </span>
           Canvas
         </h1>
-        <p className="text-gray-500 text-xs sm:text-sm">
+        <p className="text-gray-500 text-xs sm:text-sm animate-color-change ">
           Your Ultimate Destination for Coding and Tech Insights! Dive into a
           vibrant community of software engineers and tech enthusiasts where
           creativity meets innovation.

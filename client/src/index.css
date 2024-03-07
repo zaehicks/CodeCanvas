@@ -49,3 +49,13 @@ body {
 .dark .post-content a {
   color: red;
 }
+
+@keyframes color-change {
+  0% { color: #718096; } /* Initial color */
+  50% { color: #38a169; } /* New color */
+  100% { color: #718096; } /* Back to initial color */
+}
+
+.animate-color-change {
+  animation: color-change 3s infinite; /* Change 3s to adjust the speed */
+}
