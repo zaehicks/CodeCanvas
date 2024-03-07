@@ -11,7 +11,6 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { signoutSuccess } from "../redux/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { current } from "@reduxjs/toolkit";
 
 const DashSidebar = () => {
   const location = useLocation();
