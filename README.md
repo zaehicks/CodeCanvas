@@ -33,16 +33,6 @@ CodeCanvas includes an admin dashboard designed for admin users, providing them 
 - **Like Comments**: Users can engage with blog comments by liking them, fostering community interaction and feedback.
 - **Edit and Delete Comments**: Users have the ability to edit and delete their own comments, ensuring control over their contributions to the blog.
 
-## Getting Started
-
-To explore CodeCanvas and start blogging:
-
-1. Clone the repository to your local machine.
-2. Install dependencies using `npm install`.
-3. Set up MongoDB and configure the database connection in the backend.
-4. Set up Firebase Authentication and configure credentials in the frontend.
-5. Run the development server using `npm start` to launch the application locally.
-
 ## Contributions and Feedback
 
 Contributions to CodeCanvas are welcome! Whether it's bug fixes, feature enhancements, or suggestions for improvement, your input is valuable in making CodeCanvas even better. Feel free to open issues, submit pull requests, or provide feedback on existing features.
