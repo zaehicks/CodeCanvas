@@ -19,8 +19,11 @@ const UpdatePost = () => {
   const [imageUploadProgress, setImageUploadProgress] = useState(null);
   const [imageUploadError, setImageUploadError] = useState(null);
   const [formData, setFormData] = useState({});
+
   const [publishError, setPublishError] = useState(null);
   const { postId } = useParams();
+
+  console.log("formData", formData);
 
   const toolbarOptions = [
     ["bold", "italic", "underline", "strike"], // toggled buttons
@@ -62,7 +65,11 @@ const UpdatePost = () => {
         }
         if (res.ok) {
           setPublishError(null);
-          setFormData(data.posts[0]);
+          const postData = data.posts[0];
+          setFormData({
+            ...postData,
+            _id: postData._id, // Assuming _id is a field in your postData
+          });
         }
       };
       fetchPost();
@@ -205,7 +212,10 @@ const UpdatePost = () => {
           className="h-72 mb-12"
           required
           onChange={(value) => {
-            setFormData({ ...formData, content: value });
+            setFormData((prevFormData) => ({
+              ...prevFormData,
+              content: value,
+            }));
           }}
         />
         <Button type="submit" gradientDuoTone="purpleToPink">
