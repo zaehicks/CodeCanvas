@@ -10,7 +10,7 @@ const About = () => {
           </h1>
           <div className="text-md text-gray-500 flex flex-col gap-6">
             <p>
-              Welcome to CodeCanvas! CodeCanvas is more than just a tech
+              Welcome to CodeCanvas! My name is Isaiah Hickerson, and CodeCanvas is more than just a tech
               blog—it's a vibrant community dedicated to empowering individuals
               from all corners of the globe to dive deep into the world of
               coding and technology. As the creator of CodeCanvas, my mission is
