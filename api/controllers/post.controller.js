@@ -2,10 +2,6 @@ import Post from "../models/post.model.js";
 import { errorHandler } from "../utils/error.js";
 
 export const create = async (req, res, next) => {
-  if (!req.user.isAdmin) {
-    return next(errorHandler(403, "You are not alowed to create a post"));
-  }
-
   if (!req.body.title || !req.body.content) {
     return next(errorHandler(400, "Please provide all required fields"));
   }
@@ -17,7 +13,7 @@ export const create = async (req, res, next) => {
   const newPost = new Post({
     ...req.body,
     slug,
-    userId: req.user.id,
+    userId: req.user.id, // Set the user ID to the current user's ID
   });
   try {
     const savedPost = await newPost.save();
@@ -32,23 +28,34 @@ export const getposts = async (req, res, next) => {
     const startIndex = parseInt(req.query.startIndex) || 0;
     const limit = parseInt(req.query.limit) || 9;
     const sortDirection = req.query.order === "asc" ? 1 : -1;
-    const posts = await Post.find({
-      ...(req.query.userId && { userId: req.query.userId }),
-      ...(req.query.category && { category: req.query.category }),
-      ...(req.query.slug && { slug: req.query.slug }),
-      ...(req.query.postId && { _id: req.query.postId }),
-      ...(req.query.searchTerm && {
-        $or: [
-          { title: { $regex: req.query.searchTerm, $options: "i" } },
-          { content: { $regex: req.query.searchTerm, $options: "i" } },
-        ],
-      }),
-    })
+
+    const query = {};
+
+    // Check if specific query parameters are provided and include them in the query
+    if (req.query.category) {
+      query.category = req.query.category;
+    }
+    if (req.query.slug) {
+      query.slug = req.query.slug;
+    }
+    if (req.query.postId) {
+      query._id = req.query.postId;
+    }
+    if (req.query.searchTerm) {
+      query.$or = [
+        { title: { $regex: req.query.searchTerm, $options: "i" } },
+        { content: { $regex: req.query.searchTerm, $options: "i" } },
+      ];
+    }
+
+    // Fetch all posts without filtering by userId unless specified
+    const posts = await Post.find(query)
+      .populate('userId') // Populate the user data for each post
       .sort({ updatedAt: sortDirection })
       .skip(startIndex)
       .limit(limit);
 
-    const totalPosts = await Post.countDocuments();
+    const totalPosts = await Post.countDocuments(query);
     const now = new Date();
     const oneMonthAgo = new Date(
       now.getFullYear(),
@@ -57,6 +64,7 @@ export const getposts = async (req, res, next) => {
     );
 
     const lastMonthPosts = await Post.countDocuments({
+      ...query,
       createdAt: { $gte: oneMonthAgo },
     });
 
@@ -70,11 +78,20 @@ export const getposts = async (req, res, next) => {
   }
 };
 
+
+
 export const deletepost = async (req, res, next) => {
-  if (!req.user.isAdmin || req.user.id !== req.params.userId) {
-    return next(errorHandler(403, "You are not allowed to delete this post"));
-  }
   try {
+    const post = await Post.findById(req.params.postId);
+    if (!post) {
+      return next(errorHandler(404, "Post not found"));
+    }
+
+    // Check if the current user is the owner of the post
+    if (post.userId !== req.user.id && (!req.user.isAdmin)) {
+      return next(errorHandler(403, "You are not allowed to delete this post"));
+    }
+
     await Post.findByIdAndDelete(req.params.postId);
     res.status(200).json("The post has been deleted.");
   } catch (error) {
@@ -83,10 +100,17 @@ export const deletepost = async (req, res, next) => {
 };
 
 export const updatepost = async (req, res, next) => {
-  if (!req.user.isAdmin || req.user.id !== req.params.userId) {
-    return next(errorHandler(403, "You are not allowed to update this post"));
-  }
   try {
+    const post = await Post.findById(req.params.postId);
+    if (!post) {
+      return next(errorHandler(404, "Post not found"));
+    }
+
+    // Check if the current user is the owner of the post
+    if (post.userId !== req.user.id) {
+      return next(errorHandler(403, "You are not allowed to update this post"));
+    }
+
     const updatedPost = await Post.findByIdAndUpdate(
       req.params.postId,
       {
