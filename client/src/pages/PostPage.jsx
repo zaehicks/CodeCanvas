@@ -11,6 +11,7 @@ export default function PostPage() {
   const [error, setError] = useState(false);
   const [post, setPost] = useState(null);
   const [recentPosts, setRecentPosts] = useState(null);
+  const [author, setAuthor] = useState(null); // State to hold the author's details
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -51,6 +52,26 @@ export default function PostPage() {
     }
   }, []);
 
+  useEffect(() => {
+    const fetchAuthor = async () => {
+      try {
+        if (post) {
+          const res = await fetch(`/api/user/${post.userId}`); // Fetch user details based on postId (which should represent userId)
+          if (res.ok) {
+            const data = await res.json();
+            setAuthor(data); // Set the user who posted the page
+          }
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
+    if (post) {
+      fetchAuthor(); // Fetch user details only if post is available
+    }
+  }, [post]);
+
   if (loading)
     return (
       <div className='flex justify-center items-center min-h-screen'>
@@ -79,6 +100,7 @@ export default function PostPage() {
         <span>{post && new Date(post.createdAt).toLocaleDateString()}</span>
         <span className='italic'>
           {post && (post.content.length / 1000).toFixed(0)} mins read
+          <p className='text-gray-600'>Posted by: {author && author.username}</p>
         </span>
       </div>
       <div
