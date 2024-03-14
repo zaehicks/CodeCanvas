@@ -23,6 +23,48 @@ export const create = async (req, res, next) => {
   }
 };
 
+// Controller function to get posts belonging to the current user
+export const getUserPosts = async (req, res, next) => {
+  try {
+    const startIndex = parseInt(req.query.startIndex) || 0;
+    const limit = parseInt(req.query.limit) || 9;
+    const sortDirection = req.query.order === "asc" ? 1 : -1;
+
+    // Query to fetch only the posts belonging to the current user
+    const query = {
+      userId: req.user.id,
+    };
+
+    // Fetch user's posts
+    const posts = await Post.find(query)
+      .populate('userId') // Populate the user data for each post
+      .sort({ updatedAt: sortDirection })
+      .skip(startIndex)
+      .limit(limit);
+
+    const totalPosts = await Post.countDocuments(query);
+    const now = new Date();
+    const oneMonthAgo = new Date(
+      now.getFullYear(),
+      now.getMonth() - 1,
+      now.getDate()
+    );
+
+    const lastMonthPosts = await Post.countDocuments({
+      ...query,
+      createdAt: { $gte: oneMonthAgo },
+    });
+
+    res.status(200).json({
+      posts,
+      totalPosts,
+      lastMonthPosts,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const getposts = async (req, res, next) => {
   try {
     const startIndex = parseInt(req.query.startIndex) || 0;
