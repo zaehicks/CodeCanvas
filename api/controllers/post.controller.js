@@ -149,7 +149,7 @@ export const updatepost = async (req, res, next) => {
     }
 
     // Check if the current user is the owner of the post
-    if (post.userId !== req.user.id) {
+    if (post.userId !== req.user.id && (!req.user.isAdmin)) {
       return next(errorHandler(403, "You are not allowed to update this post"));
     }
 
