@@ -22,6 +22,7 @@ body {
 
 .post-content p {
   margin-bottom: 0.5rem;
+
 }
 
 .post-content h1 {
@@ -36,6 +37,9 @@ body {
   font-family: sans-serif;
   margin: 1.5rem 0;
 }
+
+
+
 
 .post-content a {
   color: rgb(73, 149, 199);

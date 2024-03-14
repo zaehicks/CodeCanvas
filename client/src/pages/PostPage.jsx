@@ -13,6 +13,7 @@ export default function PostPage() {
   const [recentPosts, setRecentPosts] = useState(null);
   const [author, setAuthor] = useState(null); // State to hold the author's details
 
+
   useEffect(() => {
     const fetchPost = async () => {
       try {
@@ -80,7 +81,7 @@ export default function PostPage() {
     );
 
   return (
-    <main className="p-3 flex flex-col items-center min-h-screen">
+    <main className="p-3 flex flex-col items-center min-h-screen ">
       {/* Content */}
 
       <h1 className="text-3xl mt-10 p-3 text-center font-serif max-w-2xl lg:text-4xl">
@@ -113,7 +114,7 @@ export default function PostPage() {
         </span>
       </div>
       <div
-        className="p-3 max-w-screen-md mx-auto w-full post-content"
+        className="p-3  text-[3.1vw]  sm:text-[1rem] max-w-screen-md mx-auto text-wrap w-full post-content "
         dangerouslySetInnerHTML={{ __html: post && post.content }}
       ></div>
       <div className="max-w-screen-md mx-auto w-full">
