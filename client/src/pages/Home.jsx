@@ -3,6 +3,7 @@ import CallToAction from "../components/CallToAction.jsx";
 import { useEffect, useState } from "react";
 import PostCard from "../components/PostCard.jsx";
 
+
 const Home = () => {
   const [posts, setPosts] = useState([]);
 
