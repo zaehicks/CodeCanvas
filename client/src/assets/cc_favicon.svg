@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.1 16.54">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #3f4591;
+      }
+
+      .cls-2 {
+        fill: #fff;
+        letter-spacing: 0em;
+      }
+
+      .cls-3 {
+        font-family: PublicSansRoman-Bold, 'Public Sans';
+        font-size: 11.91px;
+        font-variation-settings: 'wght' 700;
+        font-weight: 700;
+      }
+    </style>
+  </defs>
+  <text class="cls-3" transform="translate(0 13.68)"><tspan class="cls-1" x="0" y="0">C</tspan><tspan class="cls-2" x="8.55" y="0">C</tspan></text>
+</svg>
