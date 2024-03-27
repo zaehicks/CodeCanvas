@@ -13,7 +13,6 @@ export default function PostPage() {
   const [recentPosts, setRecentPosts] = useState(null);
   const [author, setAuthor] = useState(null); // State to hold the author's details
 
-
   useEffect(() => {
     const fetchPost = async () => {
       try {
@@ -114,9 +113,13 @@ export default function PostPage() {
         </span>
       </div>
       <div
-        className="p-3  text-[3.1vw]  sm:text-[1rem] max-w-screen-md mx-auto text-wrap w-full post-content "
-        dangerouslySetInnerHTML={{ __html: post && post.content }}
-      ></div>
+        className="p-3  sm:text-[1rem] max-w-screen-md mx-auto text-wrap w-full post-content ">
+          {post && (
+  <div className="max-w-screen-md  text-wrap">
+    <div dangerouslySetInnerHTML={{ __html: post.content }} />
+  </div>
+)}
+      </div>
       <div className="max-w-screen-md mx-auto w-full">
         <CallToAction />
       </div>

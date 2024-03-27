@@ -63,3 +63,7 @@ body {
 .animate-color-change {
   animation: color-change 3s infinite; /* Change 3s to adjust the speed */
 }
+
+.ql-syntax {
+  white-space: pre-wrap;
+}
