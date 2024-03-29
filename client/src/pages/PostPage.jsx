@@ -112,13 +112,12 @@ export default function PostPage() {
           </p>
         </span>
       </div>
-      <div
-        className="p-3  sm:text-[1rem] max-w-screen-md mx-auto text-wrap w-full post-content ">
-          {post && (
-  <div className="max-w-screen-md  text-wrap">
-    <div dangerouslySetInnerHTML={{ __html: post.content }} />
-  </div>
-)}
+      <div className="p-3  sm:text-[1rem] max-w-screen-md mx-auto text-wrap w-full post-content ">
+        {post && (
+          <div className="max-w-screen-md  text-wrap">
+            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+          </div>
+        )}
       </div>
       <div className="max-w-screen-md mx-auto w-full">
         <CallToAction />
@@ -127,7 +126,7 @@ export default function PostPage() {
 
       <div className="flex flex-col justify-center items-center mb-5">
         <h1 className="text-xl mt-5">Recent articles</h1>
-        <div className="flex flex-wrap gap-5 mt-5 justify-center max-w-screen-md">
+        <div className="flex flex-wrap gap-5 mt-5 justify-center">
           {recentPosts &&
             recentPosts.map((post) => <PostCard key={post._id} post={post} />)}
         </div>
