@@ -91,7 +91,7 @@ const Search = () => {
       const data = await res.json();
       setPosts([...posts, ...data.posts]);
       if (data.posts.length === 9) {
-        setShowMore(true)
+        setShowMore(true);
       } else {
         setShowMore(false);
       }
@@ -128,7 +128,6 @@ const Search = () => {
               value={sidebarData.category}
               id="category"
             >
-              <option value="uncategorized">Uncategorized</option>
               <option value="javascript">JavaScript</option>
               <option value="reactjs">React.js</option>
               <option value="css">CSS</option>
