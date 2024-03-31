@@ -112,17 +112,17 @@ export default function PostPage() {
           </p>
         </span>
       </div>
-      <div className="p-3  sm:text-[1rem] max-w-screen-md mx-auto text-wrap w-full post-content ">
-        {post && (
-          <div className="max-w-screen-md  text-wrap">
-            <div dangerouslySetInnerHTML={{ __html: post.content }} />
-          </div>
-        )}
-      </div>
-      <div className="max-w-screen-md mx-auto w-full">
-        <CallToAction />
-      </div>
-      <CommentSection postId={post._id} />
+    <div className="p-3 sm:text-[1rem] max-w-screen-md mx-auto text-wrap w-full post-content">
+  {post && (
+    <div className="max-w-screen-md text-wrap post-content-inner">
+      <div dangerouslySetInnerHTML={{ __html: post.content }} />
+    </div>
+  )}
+</div>
+<div className="max-w-screen-md mx-auto w-full">
+  <CallToAction />
+</div>
+<CommentSection postId={post._id} />
 
       <div className="flex flex-col justify-center items-center mb-5">
         <h1 className="text-xl mt-5">Recent articles</h1>

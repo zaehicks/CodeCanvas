@@ -22,13 +22,12 @@ body {
 
 .post-content p {
   margin-bottom: 0.5rem;
-
 }
 
 .post-content h1 {
   font-size: 1.5rem;
   font-weight: 600;
-  font-family: sans-serif; 
+  font-family: sans-serif;
   margin: 1.5rem 0;
 }
 
@@ -37,9 +36,6 @@ body {
   font-family: sans-serif;
   margin: 1.5rem 0;
 }
-
-
-
 
 .post-content a {
   color: rgb(73, 149, 199);
@@ -55,9 +51,15 @@ body {
 }
 
 @keyframes color-change {
-  0% { color: #718096; } /* Initial color */
-  50% { color: #38a169; } /* New color */
-  100% { color: #718096; } /* Back to initial color */
+  0% {
+    color: #718096;
+  } /* Initial color */
+  50% {
+    color: #38a169;
+  } /* New color */
+  100% {
+    color: #718096;
+  } /* Back to initial color */
 }
 
 .animate-color-change {
@@ -69,4 +71,26 @@ body {
   background-color: rgba(0, 255, 0, 0.1);
 }
 
+.post-content-inner ol {
+  /* Styles for ordered (numbered) lists */
+  list-style-type: decimal; /* Use decimal style for ordered list items */
+  margin-left: 1.5rem; /* Add left margin for ordered list items */
+}
 
+.post-content-inner ul {
+  /* Styles for bulleted lists */
+  list-style-type: disc; /* Use disc style for bulleted list items */
+  margin-left: 1.5rem; /* Add left margin for bulleted list items */
+}
+
+.post-content-inner ul ul {
+  /* Styles for nested bulleted lists */
+  list-style-type: circle; /* Use circle style for nested bulleted list items */
+  margin-left: 1.5rem; /* Add left margin for nested bulleted list items */
+}
+
+.post-content-inner ol ol {
+  /* Styles for nested ordered lists */
+  list-style-type: lower-alpha; /* Use lower-alpha style for nested ordered list items */
+  margin-left: 1.5rem; /* Add left margin for nested ordered list items */
+}
