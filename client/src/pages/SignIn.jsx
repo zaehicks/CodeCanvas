@@ -53,7 +53,7 @@ const SignIn = () => {
             Canvas
           </Link>
           <p className="text-sm mt-5">
-            Please sign in with your email and password, or with Google.
+            Please sign in with your email and password, or with Google/GitHub.
           </p>
         </div>
         {/* right */}

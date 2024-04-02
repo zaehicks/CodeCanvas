@@ -49,7 +49,7 @@ const SignUp = () => {
             Canvas
           </Link>
           <p className="text-sm mt-5">
-            Sign up with your email and password, or sign up with Google.
+            Sign up with your email and password, or sign up with Google/GitHub.
           </p>
         </div>
         {/* right */}
