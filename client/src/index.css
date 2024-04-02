@@ -73,7 +73,7 @@ body {
 
 .post-content-inner ol {
   /* Styles for ordered (numbered) lists */
-  list-style-type: decimal; /* Use decimal style for ordered list items */
+  list-style-type: decimal; /* Use decimal style for ordered list items! */
   margin-left: 1.5rem; /* Add left margin for ordered list items */
 }
 
