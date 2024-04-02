@@ -46,7 +46,6 @@ const OAuth = () => {
 
     try {
       const resultFromGithub = await signInWithPopup(auth, provider);
-      console.log(resultFromGithub);
 
       const res = await fetch("/api/auth/github", {
         method: "POST",
